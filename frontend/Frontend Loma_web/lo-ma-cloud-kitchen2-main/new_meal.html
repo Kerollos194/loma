@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Meals — Lo'ma</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Lo'<span>ma</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="new_meal.html">Fresh Meals</a></li>
+        <li><a href="custORrest.html">Returned Meals</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a class="cart-icon-btn" href="#" onclick="window.lomaCart&&lomaCart.toggleSidebar();return false;"
+          id="cartNavBtn" title="Your Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+        </a>
+        <a class="login-btn" href="login.html">Log In</a>
+        <a class="signup-btn" href="signup.html">Sign Up</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <ul class="mobile-menu" id="mobileMenu">
+    <li><a href="index.html">Home</a></li>
+    <li class="active"><a href="new_meal.html">Fresh Meals</a></li>
+    <li><a href="custORrest.html">Returned Meals</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <div class="mobile-auth">
+      <a class="login-btn" href="login.html">Log In</a>
+      <a class="signup-btn" href="signup.html">Sign Up</a>
+    </div>
+  </ul>
+
+  <section id="new-meals-section" class="new-meals-section">
+    <div class="page-header">
+      <h1>Fresh Meals</h1>
+      <p>Freshly prepared every day by our professional kitchen team.</p>
+    </div>
+
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search for meals..." class="search-bar" id="searchMeals" />
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Category ▾</button>
+      <button class="filter-btn">Price ▾</button>
+      <button class="filter-btn">Dietary ▾</button>
+    </div>
+
+    <div class="section-label">New &amp; Fresh</div>
+
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-img-container"><img
+            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
+            alt="Mediterranean Quinoa Salad" class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Mediterranean Quinoa Salad</h3>
+          <p class="meal-desc">A refreshing salad with quinoa, feta, olives, and a lemon vinaigrette.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$12.99</span><span
+                class="tag category">Salad</span><span class="tag dietary">Vegetarian</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80"
+            alt="Grilled Chicken Bowl" class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Grilled Chicken Bowl</h3>
+          <p class="meal-desc">Juicy grilled chicken over brown rice with roasted vegetables and tahini sauce.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$14.99</span><span
+                class="tag category">Bowl</span><span class="tag dietary">High Protein</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-container"><img
+            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80" alt="Vegan Buddha Bowl"
+            class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Vegan Buddha Bowl</h3>
+          <p class="meal-desc">Colorful bowl with sweet potato, chickpeas, avocado, and green goddess dressing.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$13.49</span><span
+                class="tag category">Bowl</span><span class="tag dietary">Vegan</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-container"><img
+            src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&q=80" alt="Beef Shawarma Wrap"
+            class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Beef Shawarma Wrap</h3>
+          <p class="meal-desc">Tender marinated beef with garlic sauce, pickles, and fresh veggies in soft pita.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$11.99</span><span
+                class="tag category">Wrap</span><span class="tag dietary">Beef</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-container"><img
+            src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80" alt="Salmon Teriyaki"
+            class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Salmon Teriyaki</h3>
+          <p class="meal-desc">Pan-seared salmon fillet glazed with teriyaki sauce, served with jasmine rice.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$17.99</span><span
+                class="tag category">Seafood</span><span class="tag dietary">Gluten-Free</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-container"><img
+            src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80" alt="Margherita Pizza"
+            class="meal-img" /></div>
+        <div class="card-info">
+          <h3 class="meal-title">Margherita Pizza</h3>
+          <p class="meal-desc">Classic wood-fired pizza with San Marzano tomatoes, mozzarella, and fresh basil.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div class="tags" style="margin-bottom:0"><span class="tag price">$15.49</span><span
+                class="tag category">Pizza</span><span class="tag dietary">Vegetarian</span></div>
+            <button class="add-to-cart-btn" style="width:auto;white-space:nowrap">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="co">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo">Lo'<span>ma</span></div>
+          <p>Save Food, Save Money.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="new_meal.html">Fresh Meals</a></li>
+            <li><a href="custORrest.html">Returned Meals</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> support@loma.com</li>
+            <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Lo'ma Project. Designed for Web Development Course.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="modal.js"></script>
+</body>
+
+</html>

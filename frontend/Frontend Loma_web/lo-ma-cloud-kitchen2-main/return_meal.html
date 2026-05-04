@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Returned Meals — Lo'ma</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Lo'<span>ma</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="new_meal.html">Fresh Meals</a></li>
+      <li class="active"><a href="custORrest.html">Returned Meals</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-auth">
+      <a class="cart-icon-btn" href="#" onclick="window.lomaCart&&lomaCart.toggleSidebar();return false;" id="cartNavBtn" title="Your Cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </a>
+      <a class="login-btn" href="login.html">Log In</a>
+      <a class="signup-btn" href="signup.html">Sign Up</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<ul class="mobile-menu" id="mobileMenu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="new_meal.html">Fresh Meals</a></li>
+  <li class="active"><a href="custORrest.html">Returned Meals</a></li>
+  <li><a href="about.html">About Us</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <div class="mobile-auth">
+    <a class="login-btn" href="login.html">Log In</a>
+    <a class="signup-btn" href="signup.html">Sign Up</a>
+  </div>
+</ul>
+
+<section id="returned-meals" class="returned-meals-section">
+  <h2 class="section-title">Available Returned Meals</h2>
+  <p class="section-subtitle">Delicious meals at a discount, ready for a second chance.</p>
+
+  <div class="sorting-bar-wrap">
+    <span class="sort-label">Sort by:</span>
+    <button class="sort-btn c">Discount <i class="fa-solid fa-arrow-down"></i></button>
+    <button class="sort-btn">Expiry Time <i class="fa-solid fa-caret-down"></i></button>
+    <button class="sort-btn">Restaurant <i class="fa-solid fa-caret-down"></i></button>
+  </div>
+
+  <div class="meals-grid">
+    <div class="meal-card">
+      <div class="badge green">20% OFF</div>
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" class="re-meal-img" alt="Grilled Chicken Platter"/>
+      <div class="meal-card-body">
+        <h3>Grilled Chicken Platter</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>The Corner Bistro</p>
+        <p class="reason">Reason: Wrong delivery address</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 9:00 PM</p>
+        <div class="price-box"><span class="new-price">$11.99</span><span class="old-price">$14.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="badge green">35% OFF</div>
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" class="re-meal-img" alt="Beef Burger Combo"/>
+      <div class="meal-card-body">
+        <h3>Beef Burger Combo</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>Urban Grill</p>
+        <p class="reason">Reason: Cancelled order</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 10:30 PM</p>
+        <div class="price-box"><span class="new-price">$9.74</span><span class="old-price">$14.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="badge green">50% OFF</div>
+      <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&q=80" class="re-meal-img" alt="Pasta Carbonara"/>
+      <div class="meal-card-body">
+        <h3>Pasta Carbonara</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>La Cucina</p>
+        <p class="reason">Reason: Late delivery</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 8:00 PM</p>
+        <div class="price-box"><span class="new-price">$7.49</span><span class="old-price">$14.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="badge green">25% OFF</div>
+      <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=500&q=80" class="re-meal-img" alt="Sushi Platter"/>
+      <div class="meal-card-body">
+        <h3>Sushi Platter</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>Tokyo House</p>
+        <p class="reason">Reason: Missing items reported</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 7:30 PM</p>
+        <div class="price-box"><span class="new-price">$18.74</span><span class="old-price">$24.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="badge green">40% OFF</div>
+      <img src="https://images.unsplash.com/photo-1593001874117-c22021e64a54?w=500&q=80" class="re-meal-img" alt="Falafel Wrap"/>
+      <div class="meal-card-body">
+        <h3>Falafel Wrap</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>Green Garden</p>
+        <p class="reason">Reason: Wrong ingredients order</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 11:00 PM</p>
+        <div class="price-box"><span class="new-price">$5.99</span><span class="old-price">$9.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="badge green">30% OFF</div>
+      <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80" class="re-meal-img" alt="Margherita Pizza Slice"/>
+      <div class="meal-card-body">
+        <h3>Margherita Pizza Slice</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>Napoli Oven</p>
+        <p class="reason">Reason: Cold food complaint</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: Today 9:30 PM</p>
+        <div class="price-box"><span class="new-price">$6.99</span><span class="old-price">$9.99</span></div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="co">
+    <div class="footer-content">
+      <div class="footer-col"><div class="footer-logo">Lo'<span>ma</span></div><p>Save Food, Save Money.</p></div>
+      <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="new_meal.html">Fresh Meals</a></li><li><a href="custORrest.html">Returned Meals</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h3>Contact</h3><ul><li><i class="fas fa-envelope"></i> support@loma.com</li><li><i class="fas fa-phone"></i> +1 234 567 8900</li></ul></div>
+    </div>
+    <div class="copyright"><p>&copy; 2026 Lo'ma Project. Designed for Web Development Course.</p></div>
+  </div>
+</footer>
+<script src="main.js"></script>
+<script src="cart.js"></script>
+<script src="modal.js"></script>
+<script>
+// ── Load meals added by restaurant form ─────────────────────
+function loadAddedMeals() {
+  const meals = JSON.parse(localStorage.getItem('lomaAddedMeals') || '[]');
+  if (!meals.length) return;
+
+  const grid = document.querySelector('.meals-grid');
+  if (!grid) return;
+
+  // Default fallback image (food icon SVG as data-url)
+  const fallbackImg = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220"><rect width="400" height="220" fill="%23f0f7f1"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-size="60">🍽️</text></svg>';
+
+  meals.forEach(function(meal) {
+    // Remove existing card if same id to avoid duplicates on re-load
+    const old = document.querySelector('[data-meal-id="' + meal.id + '"]');
+    if (old) return;
+
+    const discountNum = parseInt(meal.discount) || 0;
+    const badgeColor  = discountNum >= 40 ? 'orange' : 'green';
+    const imgSrc      = meal.img || fallbackImg;
+
+    const card = document.createElement('div');
+    card.className = 'meal-card';
+    card.dataset.mealId = meal.id;
+    card.innerHTML = `
+      <div class="badge ${badgeColor}">${discountNum}% OFF</div>
+      <img src="${imgSrc}" class="re-meal-img" alt="${meal.name}" onerror="this.src='${fallbackImg}'"/>
+      <div class="meal-card-body">
+        <h3>${meal.name}</h3>
+        <p class="restaurant"><i class="fas fa-store" style="margin-right:6px"></i>${meal.restaurant}</p>
+        <p class="reason">Reason: ${meal.reason}</p>
+        <p class="expiry"><i class="fas fa-clock" style="margin-right:6px"></i>Expires: ${meal.expiry}</p>
+        <div class="price-box">
+          <span class="new-price">$${meal.price}</span>
+          ${meal.originalPrice > 0 ? `<span class="old-price">$${meal.originalPrice}</span>` : ''}
+        </div>
+        <button class="add-btn">Add to Cart</button>
+      </div>
+    `;
+
+    // Prepend so new meals appear first
+    grid.insertBefore(card, grid.firstChild);
+  });
+
+  // Re-wire cart buttons after adding cards
+  if (window.lomaCart) window.lomaCart.rewire && window.lomaCart.rewire();
+}
+
+document.addEventListener('DOMContentLoaded', loadAddedMeals);
+</script>
+</body>
+</html>
