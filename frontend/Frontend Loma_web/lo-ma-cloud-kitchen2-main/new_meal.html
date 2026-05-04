@@ -21,8 +21,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-auth">
-        <a class="cart-icon-btn" href="#" onclick="window.lomaCart&&lomaCart.toggleSidebar();return false;"
-          id="cartNavBtn" title="Your Cart">
+        <a class="cart-icon-btn" href="#" id="cartNavBtn" title="Your Cart">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-badge" id="cartBadge" style="display:none">0</span>
         </a>
@@ -65,7 +64,7 @@
     <div class="section-label">New &amp; Fresh</div>
 
     <div class="cards-container">
-      <div class="card">
+      <div class="card" data-id="1" data-type="fresh">
         <div class="card-img-container"><img
             src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
             alt="Mediterranean Quinoa Salad" class="meal-img" /></div>
@@ -79,8 +78,8 @@
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80"
+      <div class="card" data-type="fresh">
+        <div class="  card-img-container"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80"
             alt="Grilled Chicken Bowl" class="meal-img" /></div>
         <div class="card-info">
           <h3 class="meal-title">Grilled Chicken Bowl</h3>
@@ -92,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-type="fresh">
         <div class="card-img-container"><img
             src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80" alt="Vegan Buddha Bowl"
             class="meal-img" /></div>
@@ -106,7 +105,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-type="fresh">
         <div class="card-img-container"><img
             src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&q=80" alt="Beef Shawarma Wrap"
             class="meal-img" /></div>
@@ -120,7 +119,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-type="fresh">
         <div class="card-img-container"><img
             src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80" alt="Salmon Teriyaki"
             class="meal-img" /></div>
@@ -134,7 +133,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-type="fresh">
         <div class="card-img-container"><img
             src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80" alt="Margherita Pizza"
             class="meal-img" /></div>
@@ -181,8 +180,21 @@
     </div>
   </footer>
   <script src="main.js"></script>
+  <script type="module" src="js/api.js"></script>
+  <script type="module" src="js/state.js"></script>
   <script src="cart.js"></script>
   <script src="modal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cartBtn = document.getElementById('cartNavBtn');
+      if (cartBtn) {
+        cartBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.lomaCart) window.lomaCart.toggleSidebar();
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

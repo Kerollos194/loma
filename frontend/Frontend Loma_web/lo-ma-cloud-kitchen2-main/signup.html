@@ -67,7 +67,16 @@
     <h2>Create an account</h2>
     <p class="auth-subtitle">Join Lo'ma and start saving on great meals</p>
 
-    <form onsubmit="event.preventDefault(); alert('Account created! (Front-end demo)');">
+    <form id="signupForm">
+      <div class="auth-form-group">
+        <label for="role">I am a...</label>
+        <div class="auth-input-wrap">
+          <select id="role" class="auth-input" style="padding-left:12px !important">
+            <option value="customer">Customer (I want to buy meals)</option>
+            <option value="restaurant">Restaurant (I want to list meals)</option>
+          </select>
+        </div>
+      </div>
       <div class="auth-form-group">
         <label for="fullname">Full Name</label>
         <div class="auth-input-wrap">
@@ -113,18 +122,45 @@
 </div>
 
 <script src="main.js"></script>
-<script>
-function togglePassword(inputId, iconId) {
-  const input = document.getElementById(inputId);
-  const icon = document.getElementById(iconId);
-  if (input.type === 'password') {
-    input.type = 'text';
-    icon.classList.replace('fa-eye', 'fa-eye-slash');
-  } else {
-    input.type = 'password';
-    icon.classList.replace('fa-eye-slash', 'fa-eye');
-  }
-}
+<script type="module">
+  import { handleSignup } from './js/auth.js';
+  import './js/state.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+      
+      if (password !== confirm) {
+        window.appState.showFeedback("Passwords do not match!", "error");
+        return;
+      }
+
+      const userData = {
+        name: document.getElementById('fullname').value,
+        email: document.getElementById('email').value,
+        password: password,
+        role: document.getElementById('role').value
+      };
+      
+      handleSignup(userData);
+    });
+  });
+
+  window.togglePassword = function(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+  };
 </script>
 </body>
 </html>

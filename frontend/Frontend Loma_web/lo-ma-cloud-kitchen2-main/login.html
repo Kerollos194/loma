@@ -45,7 +45,7 @@
     <h2>Welcome back</h2>
     <p class="auth-subtitle">Sign in to your Lo'ma account</p>
 
-    <form onsubmit="event.preventDefault(); alert('Login successful! (Front-end demo)');">
+    <form id="loginForm">
       <div class="auth-form-group">
         <label for="email">Email address</label>
         <div class="auth-input-wrap">
@@ -78,18 +78,31 @@
 </div>
 
 <script src="main.js"></script>
-<script>
-function togglePassword(inputId, iconId) {
-  const input = document.getElementById(inputId);
-  const icon = document.getElementById(iconId);
-  if (input.type === 'password') {
-    input.type = 'text';
-    icon.classList.replace('fa-eye', 'fa-eye-slash');
-  } else {
-    input.type = 'password';
-    icon.classList.replace('fa-eye-slash', 'fa-eye');
-  }
-}
+<script type="module">
+  import { handleLogin } from './js/auth.js';
+  import './js/state.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      handleLogin(email, password);
+    });
+  });
+
+  window.togglePassword = function(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+  };
 </script>
 </body>
 </html>

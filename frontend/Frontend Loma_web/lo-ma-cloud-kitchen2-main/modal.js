@@ -138,18 +138,51 @@
   }
 
   /**
-   * Binds form submission events to simulate authentication.
+   * Binds form submission events to use the real API layer.
    */
   function bindFormSubmissions() {
-    DOM.loginForm.addEventListener('submit', (e) => {
+    DOM.loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      displaySuccessMessage('Welcome back! 👋', "You've successfully logged in to Lo'ma.");
+      const email = document.getElementById('m-email').value;
+      const password = document.getElementById('m-pwd').value;
+
+      try {
+        if (!window.API) throw new Error("API layer not loaded");
+        const result = await window.API.Auth.login(email, password);
+        
+        if (window.appState) window.appState.user = result.user;
+        
+        displaySuccessMessage('Welcome back! 👋', `You've successfully logged in as ${result.user.name}.`);
+        
+        // Refresh or redirect after success
+        setTimeout(() => window.location.reload(), 2000);
+      } catch (error) {
+        alert(error.message);
+      }
     });
 
-    DOM.signupForm.addEventListener('submit', (e) => {
+    DOM.signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const fullName = document.getElementById('m-name').value.split(' ')[0];
-      displaySuccessMessage(`Welcome, ${fullName}! 🎉`, "Your Lo'ma account has been created successfully.");
+      const name = document.getElementById('m-name').value;
+      const email = document.getElementById('m-semail').value;
+      const password = document.getElementById('m-spwd').value;
+      const confirm = document.getElementById('m-cpwd').value;
+
+      if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        if (!window.API) throw new Error("API layer not loaded");
+        // Default role to customer for modal signup
+        await window.API.Auth.register({ name, email, password, role: 'customer' });
+        
+        displaySuccessMessage('Account Created! 🎉', "Your Lo'ma account has been created. Please log in.");
+        switchTab('login');
+      } catch (error) {
+        alert(error.message);
+      }
     });
   }
 

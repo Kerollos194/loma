@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="contact-form-card">
-        <form onsubmit="event.preventDefault(); alert('Message sent! (Front-end demo)');">
+        <form id="contactForm">
           <div class="form-group2"><label for="name">Your Name</label><input type="text" id="name" class="form-control" placeholder="John Doe" required/></div>
           <div class="form-group2"><label for="email">Your Email</label><input type="email" id="email" class="form-control" placeholder="john@example.com" required/></div>
           <div class="form-group2"><label for="subject">Subject</label>
@@ -94,5 +94,10 @@
 <script src="main.js"></script>
 <script src="cart.js"></script>
 <script src="modal.js"></script>
+<script type="module">
+  import { initContactForm } from './js/contact.js';
+  import './js/state.js';
+  document.addEventListener('DOMContentLoaded', initContactForm);
+</script>
 </body>
 </html>

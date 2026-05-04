@@ -19,7 +19,7 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-auth">
-      <a class="cart-icon-btn" href="#" onclick="window.lomaCart&&lomaCart.toggleSidebar();return false;" id="cartNavBtn" title="Your Cart">
+      <a class="cart-icon-btn" href="#" id="cartNavBtn" title="Your Cart">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge" id="cartBadge" style="display:none">0</span>
       </a>
@@ -92,8 +92,21 @@
   </div>
 </footer>
 <script src="main.js"></script>
+<script type="module" src="js/api.js"></script>
+<script type="module" src="js/state.js"></script>
 <script src="cart.js"></script>
 <script src="modal.js"></script>
-<script src="loma-agent.js"></script>
+<script>
+  // Wire up cart toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartBtn = document.getElementById('cartNavBtn');
+    if (cartBtn) {
+      cartBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.lomaCart) window.lomaCart.toggleSidebar();
+      });
+    }
+  });
+</script>
 </body>
 </html>

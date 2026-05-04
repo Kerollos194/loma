@@ -241,7 +241,7 @@
           <div class="summary-row"><span>Delivery fee</span><span>$2.99</span></div>
           <div class="summary-row total"><span>Total</span><span id="sumTotal">$0.00</span></div>
         </div>
-        <button class="place-order-btn" id="placeOrderBtn" onclick="placeOrder()">
+        <button class="place-order-btn" id="placeOrderBtn">
           <i class="fas fa-lock"></i> Place Order
         </button>
         <div class="secure-note"><i class="fas fa-shield-alt"></i> Your payment info is 100% secure</div>
@@ -253,112 +253,35 @@
 <script src="main.js"></script>
 <script src="cart.js"></script>
 <script src="modal.js"></script>
-<script>
-  // Build order summary from cart
-  function buildSummary() {
-    const cart = window.lomaCart ? window.lomaCart.getCart() : [];
-    const summaryItems = document.getElementById('summaryItems');
-    const summaryTotals = document.getElementById('summaryTotals');
+<script type="module">
+  import { initCheckout, placeOrder } from './js/checkout.js';
+  import './js/state.js';
 
-    if (!cart || cart.length === 0) {
-      summaryItems.innerHTML = '<div class="empty-cart-msg">Your cart is empty. <a href="return_meal.html">Browse meals</a></div>';
-      summaryTotals.style.display = 'none';
-      document.getElementById('placeOrderBtn').disabled = true;
-      return;
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    initCheckout();
 
-    summaryItems.innerHTML = cart.map(item => `
-      <div class="summary-item">
-        <div class="summary-item-info">
-          <div class="s-name">${item.name} <span style="color:var(--text-muted);font-weight:400">×${item.qty}</span></div>
-          <div class="s-meta">${item.restaurant}</div>
-        </div>
-        <div class="summary-item-price">$${(item.price * item.qty).toFixed(2)}</div>
-      </div>
-    `).join('');
+    const orderBtn = document.getElementById('placeOrderBtn');
+    orderBtn.addEventListener('click', () => {
+      const formData = {
+        fname: document.getElementById('fname').value,
+        lname: document.getElementById('lname').value,
+        phone: document.getElementById('phone').value,
+        street: document.getElementById('street').value,
+        city: document.getElementById('city').value,
+        zip: document.getElementById('zip').value,
+        notes: document.getElementById('notes').value,
+        payment_method: document.querySelector('.payment-option.selected')?.dataset.method || 'cod'
+      };
+      
+      // Simple validation check before calling placeOrder
+      if (!formData.fname || !formData.street || !formData.phone) {
+          window.appState.showFeedback("Please fill in all required fields", "error");
+          return;
+      }
 
-    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-    const original = cart.reduce((s, i) => s + i.originalPrice * i.qty, 0);
-    const saved = original - subtotal;
-    const total = subtotal + 2.99;
-
-    document.getElementById('sumSubtotal').textContent = '$' + subtotal.toFixed(2);
-    document.getElementById('sumTotal').textContent = '$' + total.toFixed(2);
-    if (saved > 0.01) {
-      document.getElementById('sumSaving').textContent = '-$' + saved.toFixed(2);
-      document.getElementById('sumSavingRow').style.display = 'flex';
-    }
-    summaryTotals.style.display = 'block';
-    document.getElementById('placeOrderBtn').disabled = false;
-  }
-
-  // Payment option select
-  document.querySelectorAll('.payment-option').forEach(opt => {
-    opt.addEventListener('click', function() {
-      document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
-      this.classList.add('selected');
-      const method = this.dataset.method;
-      const cardDetails = document.getElementById('cardDetails');
-      if (method === 'card') { cardDetails.classList.add('show'); }
-      else { cardDetails.classList.remove('show'); }
+      placeOrder(formData);
     });
   });
-
-  // Card number formatting
-  document.getElementById('cardNum')?.addEventListener('input', function() {
-    let v = this.value.replace(/\D/g,'').substring(0,16);
-    this.value = v.replace(/(.{4})/g,'$1 ').trim();
-  });
-  document.getElementById('cardExp')?.addEventListener('input', function() {
-    let v = this.value.replace(/\D/g,'').substring(0,4);
-    if (v.length > 2) v = v.substring(0,2) + ' / ' + v.substring(2);
-    this.value = v;
-  });
-
-  // Validate required fields
-  function validateForm() {
-    const required = ['fname','lname','phone','street','city','zip'];
-    for (const id of required) {
-      const el = document.getElementById(id);
-      if (!el.value.trim()) { el.focus(); el.style.borderColor = '#e05252'; return false; }
-      el.style.borderColor = '';
-    }
-    const method = document.querySelector('.payment-option.selected')?.dataset.method;
-    if (method === 'card') {
-      const num = document.getElementById('cardNum').value.replace(/\s/g,'');
-      if (num.length < 16) { alert('Please enter a valid card number.'); return false; }
-    }
-    return true;
-  }
-
-  // Place order
-  function placeOrder() {
-    if (!validateForm()) return;
-    const cart = window.lomaCart ? window.lomaCart.getCart() : [];
-    if (!cart || cart.length === 0) { alert('Your cart is empty!'); return; }
-
-    const method = document.querySelector('.payment-option.selected')?.dataset.method || 'cod';
-    const fname = document.getElementById('fname').value.trim();
-    const lname = document.getElementById('lname').value.trim();
-    const address = `${document.getElementById('street').value.trim()}, ${document.getElementById('city').value.trim()} ${document.getElementById('zip').value.trim()}`;
-    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-    const total = (subtotal + 2.99).toFixed(2);
-    const orderId = 'LM-' + Date.now().toString().slice(-6);
-
-    // Save order info for confirmation page
-    localStorage.setItem('lomaOrder', JSON.stringify({
-      orderId, fname, lname, address,
-      method, cart, subtotal: subtotal.toFixed(2), total,
-      date: new Date().toLocaleString()
-    }));
-
-    // Clear cart
-    localStorage.removeItem('lomaCart');
-    window.location.href = 'order-confirm.html';
-  }
-
-  // Init on load
-  document.addEventListener('DOMContentLoaded', buildSummary);
 </script>
 </body>
 </html>
