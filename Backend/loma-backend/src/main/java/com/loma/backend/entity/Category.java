@@ -1,4 +1,4 @@
-package loma_backend.entity;
+package com.loma.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

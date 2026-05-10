@@ -1,6 +1,6 @@
-package loma_backend.repository;
+package com.loma.backend.repository;
 
-import loma_backend.entity.ReturnedMeal;
+import com.loma.backend.entity.ReturnedMeal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

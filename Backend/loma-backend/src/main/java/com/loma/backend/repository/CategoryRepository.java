@@ -1,6 +1,6 @@
-package loma_backend.repository;
+package com.loma.backend.repository;
 
-import loma_backend.entity.Category;
+import com.loma.backend.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {

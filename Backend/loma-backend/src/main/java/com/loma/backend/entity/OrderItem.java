@@ -1,4 +1,4 @@
-package loma_backend.entity;
+package com.loma.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -20,15 +20,12 @@ public class OrderItem {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    // "fresh" or "returned"
     @Column(name = "meal_type", nullable = false, length = 10)
     private String mealType;
 
-    // points to fresh_meals.meal_id OR returned_meals.returned_meal_id
     @Column(name = "meal_id", nullable = false)
     private Integer mealId;
 
-    // snapshot of meal name at order time
     @Column(name = "meal_name", nullable = false, length = 150)
     private String mealName;
 
@@ -38,7 +35,6 @@ public class OrderItem {
     @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal unitPrice;
 
-    // = quantity * unitPrice
     @Column(name = "subtotal", nullable = false, precision = 10, scale = 2)
     private BigDecimal subtotal;
 }

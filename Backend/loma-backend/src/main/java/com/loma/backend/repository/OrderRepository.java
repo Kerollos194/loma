@@ -1,6 +1,6 @@
-package loma_backend.repository;
+package com.loma.backend.repository;
 
-import loma_backend.entity.Order;
+import com.loma.backend.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

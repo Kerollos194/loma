@@ -1,4 +1,4 @@
-package loma_backend.entity;
+package com.loma.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,7 +26,6 @@ public class User {
     @Column(name = "phone", length = 20)
     private String phone;
 
-    // "customer" or "restaurant"
     @Column(name = "role", nullable = false, length = 20)
     private String role;
 

@@ -1,4 +1,4 @@
-package loma_backend.entity;
+package com.loma.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,14 +25,12 @@ public class Order {
     @Column(name = "total_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
-    // pending / confirmed / preparing / delivered / cancelled
     @Column(name = "status", nullable = false, length = 30)
     private String status = "pending";
 
     @Column(name = "delivery_address", length = 255)
     private String deliveryAddress;
 
-    // cod / card / wallet
     @Column(name = "payment_method", length = 20)
     private String paymentMethod = "cod";
 
